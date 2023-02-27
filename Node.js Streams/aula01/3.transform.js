@@ -37,6 +37,7 @@ const mapHeaders = Transform({
     cb(null, "id,name\n".concat(chunk));
   },
 });
+
 const writable = Writable({
   write(chunk, enconding, callback) {
     console.log("msg", chunk.toString());
@@ -44,6 +45,7 @@ const writable = Writable({
     callback();
   },
 });
+
 const pipeline = readable
   .pipe(mapFields)
   .pipe(mapHeaders)
